@@ -3,7 +3,6 @@ import hashlib
 from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render_to_response
-from django.template import RequestContext
 
 def facebook_login(request):
     params = _verify_signature(request.COOKIES)
