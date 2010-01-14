@@ -8,5 +8,5 @@ setup(name='django-registration-facebook-backend',
       author_email='joonas@policus.com',
       url='http://github.com/policusopensource/django-registration-facebook-backend/',
       packages=['facebook_connect', 'facebook_connect.templatetags'],
-      package_data={'facebook_connect': ['templates/*.html'],}
+      package_data={'facebook_connect': ['templates/facebook_connect/*.html'],}
      )
