@@ -4,6 +4,8 @@ from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import AnonymousUser, User
 
+from registration import signals
+
 from facebook_connect.views import _verify_signature
 from facebook_connect.models import FacebookProfile
 
@@ -32,6 +34,13 @@ class FacebookConnectBackend(object):
                         user=user_obj,
                         uid=uid
                     )
+            
+            signals.user_registered.send(
+                sender=self.__class__,
+                user=user_obj,
+                request=request
+            )
+            
             user = authenticate(uid=uid)
             login(request, user)
         elif request.user.is_authenticated():
