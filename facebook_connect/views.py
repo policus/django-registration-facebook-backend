@@ -13,11 +13,11 @@ def facebook_login(request):
                 login(request, user)
                 return redirect(settings.LOGIN_REDIRECT_URL, {}, ())
             else:
-                # Disabled account, pass for now
-                pass
+                # Disabled account, redirect and notify?
+                return redirect('/', {}, ())
         else:
-            # Invalid user, pass for now
-            pass
+            # Invalid user, redirect and notify?
+            return redirect('/', {}, ())
     elif request.user.is_authenticated():
         return redirect(settings.LOGIN_REDIRECT_URL, {}, ())
     else:
