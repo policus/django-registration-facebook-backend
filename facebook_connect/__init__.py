@@ -25,7 +25,7 @@ class FacebookConnectBackend(object):
                     # Should we redirect here, or return False and redirect in post_registration_redirect?
                     return False
                 except User.DoesNotExist:
-                    user_obj = User.objects.create(
+                    user_obj = User.objects.create_user(
                         username=uid,
                         email='',
                         password=User.objects.make_random_password(16)
